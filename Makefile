@@ -16,8 +16,8 @@ env_setup:
 # TODO integrate below with bazel
 .PHONY: fmt
 fmt:
-	@DIFF_FILES=$$(git diff --cached --name-only --diff-filter=ACM | grep -Ee "\.([chi](pp|xx)|(cc|hh|ii)|[CHI]|\.cu(\.cc)?)$$"); \
-	[ -z "$$DIFF_FILES" ] || clang-format -i -style=file "$$DIFF_FILES"
+	@SOURCE_FILES=$$(find $(PROJECT_NAME) | grep -Ee "\.([chi](pp|xx)|(cc|hh|ii)|[CHI]|cu(\.cc)?)$$"); \
+	[ -z "$$SOURCE_FILES" ] || clang-format -i -style=file $$SOURCE_FILES
 
 .PHONY: lint
 lint:

@@ -1,7 +1,8 @@
-#include "hello.hpp"
 #include <iostream>
 
+#include "hello.hpp"
+
 auto main() -> int {
-	hello::hello();
-	return 0;
+  hello::hello();
+  return 0;
 }
