@@ -21,6 +21,12 @@ http_archive(
 load("@hedron_compile_commands//:workspace_setup.bzl", "hedron_compile_commands_setup")
 hedron_compile_commands_setup()
 
+http_archive(
+    name = "gtest",
+    url = "https://github.com/google/googletest/archive/refs/tags/release-1.12.1.tar.gz",
+    strip_prefix = "googletest-release-1.12.1",
+)
+
 git_repository(
     name = "bazel_clang_tidy",
     commit = "31d62bf825a94468b3d35c5ffd4e014e1c0ff566",
