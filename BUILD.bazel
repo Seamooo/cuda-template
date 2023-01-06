@@ -1,0 +1,15 @@
+filegroup(
+   name = "clang_tidy_config",
+   srcs = [".clang-tidy"],
+   visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "thrust",
+    hdrs = glob([
+        "thrust/**/*.h"
+    ]),
+    strip_include_prefix = "thrust",
+    include_prefix = "thrust",
+    visibility = ["//visibility:public"],
+)

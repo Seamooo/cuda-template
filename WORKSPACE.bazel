@@ -1,0 +1,43 @@
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+http_archive(
+    name = "rules_cuda",
+    sha256 = "f80438bee9906e9ecb1a8a4ae2365374ac1e8a283897281a2db2fb7fcf746333",
+    strip_prefix = "runtime-b1c7cce21ba4661c17ac72421c6a0e2015e7bef3/third_party/rules_cuda",
+    urls = ["https://github.com/tensorflow/runtime/archive/b1c7cce21ba4661c17ac72421c6a0e2015e7bef3.tar.gz"],
+)
+load("@rules_cuda//cuda:dependencies.bzl", "rules_cuda_dependencies")
+rules_cuda_dependencies()
+load("@rules_cc//cc:repositories.bzl", "rules_cc_toolchains")
+rules_cc_toolchains()
+
+http_archive(
+    name = "hedron_compile_commands",
+    url = "https://github.com/hedronvision/bazel-compile-commands-extractor/archive/ed994039a951b736091776d677f324b3903ef939.tar.gz",
+    strip_prefix = "bazel-compile-commands-extractor-ed994039a951b736091776d677f324b3903ef939",
+    sha256 = "085bde6c5212c8c1603595341ffe7133108034808d8c819f8978b2b303afc9e7"
+)
+load("@hedron_compile_commands//:workspace_setup.bzl", "hedron_compile_commands_setup")
+hedron_compile_commands_setup()
+
+git_repository(
+    name = "bazel_clang_tidy",
+    commit = "31d62bf825a94468b3d35c5ffd4e014e1c0ff566",
+    remote = "https://github.com/erenon/bazel_clang_tidy.git",
+)
+
+http_archive(
+    name = "rules_foreign_cc",
+    sha256 = "2a4d07cd64b0719b39a7c12218a3e507672b82a97b98c6a89d38565894cf7c51",
+    strip_prefix = "rules_foreign_cc-0.9.0",
+    url = "https://github.com/bazelbuild/rules_foreign_cc/archive/refs/tags/0.9.0.tar.gz",
+)
+
+git_repository(
+    name = "thrust",
+    build_file_content = "",
+    tag = "1.17.2",
+    remote = "https://github.com/NVIDIA/thrust.git",
+    recursive_init_submodules = True,
+)

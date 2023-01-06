@@ -1,0 +1,13 @@
+load("@rules_cuda//cuda:defs.bzl", "cuda_library")
+
+cuda_library(
+    name = "hello_cu",
+    srcs = ["hello.cu", "hello.hpp"],
+    deps = ["@//:thrust"],
+)
+
+cc_binary(
+    name = "main",
+    deps = ["@//hello:hello_cu"],
+	srcs = ["main.cc", "hello.hpp"],
+)

@@ -1,0 +1,17 @@
+build --@rules_cuda//cuda:enable_cuda
+build --@rules_cuda//cuda:compiler=clang
+build --repo_env=CXX=clang++
+build --repo_env=CC=clang
+build --cxxopt='-std=c++17'
+
+run --@rules_cuda//cuda:enable_cuda
+run --@rules_cuda//cuda:compiler=clang
+run --repo_env=CXX=clang++
+run --repo_env=CC=clang
+run --cxxopt='-std=c++17'
+
+test --@rules_cuda//cuda:enable_cuda
+test --@rules_cuda//cuda:compiler=clang
+test --repo_env=CXX=clang++
+test --repo_env=CC=clang
+test --cxxopt='-std=c++17'
