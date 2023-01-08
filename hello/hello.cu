@@ -37,7 +37,7 @@ void hello() {
   for (auto elem = d_y.begin(); elem != d_y.end(); elem++) {
     std::cout << (*elem);
     auto tp = elem;
-    if (++tp != d_y.end()) {
+    if (tp != --d_y.end()) {
       std::cout << ", ";
     }
   }
